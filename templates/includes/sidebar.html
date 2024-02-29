@@ -4,17 +4,16 @@
   <div class="navbar-wrapper">
     <div class="navbar-brand header-logo">
       <a href="{% url 'index' %}" class="b-brand">
-        <div class="b-bg">
-          <i class="feather icon-trending-up"></i>
+        <div>
+          <img src="/static/assets/images/logo.png"/>
         </div>
-        <span class="b-title">Datta Able</span>
+        <!-- <span class="b-title">SUMO</span> -->
       </a>
-      <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
     </div>
     <div class="navbar-content scroll-div">
       <ul class="nav pcoded-inner-navbar">
         <li class="nav-item pcoded-menu-caption">
-          <label>Navigation</label>
+          <label>Pregled</label>
         </li>
         <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item {% if 'index' in segment %}active{% endif %}">
           {% if request.user.is_superuser %}
@@ -22,12 +21,24 @@
           {% else %}
           <a href="{% url 'index' %}" class="nav-link ">
           {% endif %}
-            <span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span>
+            <span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Pocetna</span>
           </a>
         </li>
         <li class="nav-item {% if 'tables' in segment %}active{% endif %}">
+          <a href="{% url '/device/list/' %}" class="nav-link "><span class="pcoded-micon"><i
+                class="feather icon-server text-c-green"></i></span><span class="pcoded-mtext">Uredaji</span></a>
+        </li>
+	<li class="nav-item {% if 'tables' in segment %}active{% endif %}">
           <a href="{% url 'tables' %}" class="nav-link "><span class="pcoded-micon"><i
-                class="feather icon-server text-c-green"></i></span><span class="pcoded-mtext">Dynamic Tables</span></a>
+                class="feather icon-briefcase text-c-green"></i></span><span class="pcoded-mtext">Ugovori</span></a>
+        </li>
+	<li class="nav-item {% if 'tables' in segment %}active{% endif %}">
+          <a href="{% url 'tables' %}" class="nav-link "><span class="pcoded-micon"><i
+                class="feather icon-check-circle text-c-green"></i></span><span class="pcoded-mtext">Verifikacija</span></a>
+        </li>
+	<li class="nav-item {% if 'tables' in segment %}active{% endif %}">
+          <a href="{% url 'tables' %}" class="nav-link "><span class="pcoded-micon"><i
+                class="feather icon-clipboard text-c-green"></i></span><span class="pcoded-mtext">Servis</span></a>
         </li>
         <li class="nav-item">
           <a target="_blank" href="/api/product/" class="nav-link "><span class="pcoded-micon"><i

@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "home",
+    "medical_devices.apps.MedicalDevicesConfig",
 
     # Tooling Dynamic_DT
     'django_dyn_dt',             # <-- NEW: Dynamic_DT
@@ -126,8 +127,12 @@ if DB_ENGINE and DB_NAME and DB_USERNAME:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'db.sqlite3',
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'mypassword',
+        'HOST': 'db-postgres',
+        'PORT': '5432',
         }
     }
 

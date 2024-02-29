@@ -4,9 +4,13 @@ services:
     container_name: appseed_app
     restart: always
     build: .
+    volumes:
+      - .:/app
     networks:
       - db_network
       - web_network
+    depends_on:
+      - db-postgres
   nginx:
     container_name: nginx
     restart: always
@@ -19,9 +23,26 @@ services:
       - web_network
     depends_on: 
       - appseed-app
+  db-postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "8001:5432"
+    networks:
+      - db_network
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=postgres
+      - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
 networks:
   db_network:
     driver: bridge
   web_network:
     driver: bridge
- 
+
+volumes:
+  pgdata:
